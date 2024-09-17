@@ -15,7 +15,8 @@ import java.util.function.Function;
 public sealed interface Either<L, R> permits Left, Right {
     /**
      * <p>
-     *      Executing an anonymous function by discriminating the Either data type value
+     *      Executing an anonymous function by discriminating against
+     *      the <i>Either</i> data type value
      * </p>
      *
      * @param onLeft The function to execute on the Left case
@@ -27,7 +28,7 @@ public sealed interface Either<L, R> permits Left, Right {
 
     /**
      * <p>
-     *     Returns true if the Either type is instantiated with the Left subtype,
+     *     Returns true if the <i>Either</i> type is instantiated with the Left subtype,
      *     false otherwise
      * </p>
      * @return Boolean value
@@ -36,10 +37,30 @@ public sealed interface Either<L, R> permits Left, Right {
 
     /**
      * <p>
-     *     Returns true if the Either type is instantiated with the Right subtype,
+     *     Returns true if the Either type is instantiated with the <i>Right</i> subtype,
      *     false otherwise
      * </p>
      * @return Boolean value
      */
     boolean isRight();
+
+    /**
+     * <p>
+     *     Defines a functor. That is, a data type that supports
+     *     a mapping operation defined by the map method.
+     *     <br /><br />
+     *     This method
+     *     applies a function(<i>fn</i>) to the values inside the data type,
+     *     returning a new data type(i.e., a new functor) if and only if the the Either
+     *     type is instantiated with the <i>Right</i> subtype. Otherwise it leaves the functor
+     *     unchanged.
+     *     <br /><br />
+     *     The type of the resulting functor is the return type specified on the <i>fn</i>
+     *     function
+     * </p>
+     * @param fn The function to applies to the Either data type
+     * @return An <i>Either</i> functor
+     * @param <T> The return type of the <i>fn</i> function
+     */
+    <T> Either<L, T> map(Function<R, T> fn);
 }

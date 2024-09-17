@@ -9,10 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class LeftTests {
     private Either<Integer, String> resEither;
+    private Either<Error, Integer> numEither;
 
     @BeforeEach
     public void tearUp() {
         this.resEither = new Left<>(19);
+        this.numEither = new Left<>(new Error("Undefined variable"));
     }
 
     @Test
@@ -35,5 +37,15 @@ public class LeftTests {
     @Test
     public void testIsRight() {
         assertFalse(this.resEither.isRight());
+    }
+
+    @Test
+    public void testFunctorMapLeft() {
+        Either<Error, Integer> res = this.numEither.map(x -> x * x);
+
+        assertEquals(res.match(
+            Throwable::getMessage,
+            _ -> "Undefined variable"
+        ), "Undefined variable");
     }
 }

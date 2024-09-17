@@ -26,4 +26,9 @@ public record Right<L, R>(R value) implements Either<L, R> {
     public boolean isRight() {
         return true;
     }
+
+    @Override
+    public <T> Either<L, T> map(Function<R, T> fn) {
+        return new Right<>(fn.apply(this.value));
+    }
 }
