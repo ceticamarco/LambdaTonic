@@ -16,4 +16,14 @@ public record Right<L, R>(R value) implements Either<L, R> {
     public <T> T match(Function<L, T> onLeft, Function<R, T> onRight) {
         return onRight.apply(this.value);
     }
+
+    @Override
+    public boolean isLeft() {
+        return false;
+    }
+
+    @Override
+    public boolean isRight() {
+        return true;
+    }
 }
