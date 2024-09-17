@@ -1,4 +1,4 @@
-package com.ceticamarco;
+package com.ceticamarco.lambdatonic;
 
 import java.util.function.Function;
 
