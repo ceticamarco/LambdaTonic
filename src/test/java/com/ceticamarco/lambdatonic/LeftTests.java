@@ -103,4 +103,12 @@ public class LeftTests {
             Optional.empty()
         );
     }
+
+    @Test
+    public void testSwapFromLeft() {
+        assertEquals(
+                this.resEither.swap(),
+                new Right<>(19)
+        );
+    }
 }

@@ -52,4 +52,9 @@ public record Right<L, R>(R value) implements Either<L, R> {
     public Optional<R> toOptional() {
         return Optional.of(this.value);
     }
+
+    @Override
+    public Either<R, L> swap() {
+        return new Left<>(this.value);
+    }
 }

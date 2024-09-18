@@ -70,7 +70,7 @@ public sealed interface Either<L, R> permits Left, Right {
      *     Applies <i>onLeft</i> function to the <i>Left</i> subtype or the
      *     <i>onRight</i> function to the <i>Right</i> subtype.
      * </p>
-     * @param onLeft The function to apply to the <i>Left</i> subtyp
+     * @param onLeft The function to apply to the <i>Left</i> subtype
      * @param onRight The function to apply to the <i>Right</i> subtype
      * @return An <i>Either</i> functor
      * @param <T> The return type of the <i>onLeft</i> function
@@ -109,4 +109,12 @@ public sealed interface Either<L, R> permits Left, Right {
      * @return An <i>Optional</i> data type
      */
     Optional<R> toOptional();
+
+    /**
+     * <p>
+     *     Flips the <i>Left</i> and the <i>Right</i> data types.
+     * </p>
+     * @return An <i>Either</i> monad with <i>Left</i> and <i>Right</i> flipped
+     */
+    Either<R, L> swap();
 }

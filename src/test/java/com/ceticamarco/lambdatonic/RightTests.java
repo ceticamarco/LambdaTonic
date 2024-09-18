@@ -103,4 +103,12 @@ public class RightTests {
             Optional.of(4)
         );
     }
+
+    @Test
+    public void testSwapFromRight() {
+        assertEquals(
+            this.numEither.swap(),
+            new Left<>(4)
+        );
+    }
 }
