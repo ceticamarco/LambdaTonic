@@ -33,6 +33,11 @@ public record Left<L, R>(L value) implements Either<L, R> {
     }
 
     @Override
+    public <T, K> Either<T, K> bimap(Function<L, T> onLeft, Function<R, K> onRight) {
+        return new Left<>(onLeft.apply(this.value));
+    }
+
+    @Override
     public R fromRight(R defaultValue) {
         return defaultValue;
     }

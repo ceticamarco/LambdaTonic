@@ -66,6 +66,19 @@ public sealed interface Either<L, R> permits Left, Right {
 
     /**
      * <p>
+     *     Applies <i>onLeft</i> function to the <i>Left</i> subtype or the
+     *     <i>onRight</i> function to the <i>Right</i> subtype.
+     * </p>
+     * @param onLeft The function to apply to the <i>Left</i> subtyp
+     * @param onRight The function to apply to the <i>Right</i> subtype
+     * @return An <i>Either</i> functor
+     * @param <T> The return type of the <i>onLeft</i> function
+     * @param <K> The return type of the <i>onRight</i> function
+     */
+    <T, K> Either<T, K> bimap(Function<L, T> onLeft, Function<R, K> onRight);
+
+    /**
+     * <p>
      *     Returns the content of <i>Right</i> or a default value
      *     <br /><br />
      *     The default value must be of the same type of the <i>Right</i> value
@@ -85,4 +98,5 @@ public sealed interface Either<L, R> permits Left, Right {
      * @return The left value of <i>Either</i> or the default value
      */
     L fromLeft(L defaultValue);
+
 }

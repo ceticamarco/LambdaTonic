@@ -52,6 +52,16 @@ public class RightTests {
     }
 
     @Test
+    public void testFunctorBiMapRight() {
+        Function<Integer, Integer> f = x -> x + 1;
+        Function<String, String> g = String::toUpperCase;
+
+        Either<Integer, String> actual = this.resEither.bimap(f, g);
+
+        assertEquals(actual.fromRight("-1"), "QUERY EXECUTED SUCCESSFULLY");
+    }
+
+    @Test
     public void testRightFunctorIdentityMorphism() {
         // Applying the map function with the identity function,
         // should not change data type structure
