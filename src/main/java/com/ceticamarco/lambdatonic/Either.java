@@ -63,4 +63,26 @@ public sealed interface Either<L, R> permits Left, Right {
      * @param <T> The return type of the <i>fn</i> function
      */
     <T> Either<L, T> map(Function<R, T> fn);
+
+    /**
+     * <p>
+     *     Returns the content of <i>Right</i> or a default value
+     *     <br /><br />
+     *     The default value must be of the same type of the <i>Right</i> value
+     * </p>
+     * @param defaultValue The default value to return if <i>Either</i> is <i>Left</i>
+     * @return The right value of <i>Either</i> or the default value
+     */
+    R fromRight(R defaultValue);
+
+    /**
+     * <p>
+     *     Returns the content of <i>Left</i> or a default value
+     *     <br /><br />
+     *     The default value must be of the same type of the <i>Left</i> value
+     * </p>
+     * @param defaultValue The default value to return if <i>Either</i> is <i>Right</i>
+     * @return The left value of <i>Either</i> or the default value
+     */
+    L fromLeft(L defaultValue);
 }

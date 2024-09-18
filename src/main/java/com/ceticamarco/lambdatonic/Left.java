@@ -31,4 +31,14 @@ public record Left<L, R>(L value) implements Either<L, R> {
     public <T> Either<L, T> map(Function<R, T> fn) {
         return new Left<>(this.value);
     }
+
+    @Override
+    public R fromRight(R defaultValue) {
+        return defaultValue;
+    }
+
+    @Override
+    public L fromLeft(L defaultValue) {
+        return this.value;
+    }
 }

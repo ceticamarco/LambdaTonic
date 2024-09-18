@@ -74,4 +74,14 @@ public class LeftTests {
 
         assertEquals(composition, FGMapped);
     }
+
+    @Test
+    public void testFromRightOnLeft() {
+        assertEquals(this.numEither.fromRight(-1), -1);
+    }
+
+    @Test
+    public void testFromLeftOnLeft() {
+        assertEquals(this.resEither.fromLeft(-1), 19);
+    }
 }
