@@ -1,5 +1,6 @@
 package com.ceticamarco.lambdatonic;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
@@ -99,4 +100,13 @@ public sealed interface Either<L, R> permits Left, Right {
      */
     L fromLeft(L defaultValue);
 
+    /**
+     * <p>
+     *     Converts an <i>Either</i> data type to a <i>java.util.Optional</i>.
+     *     The <i>Right</i> becomes a non-null <i>Optional</i> and the <i>Left</i>
+     *     becomes a null <i>Optional</i>
+     * </p>
+     * @return An <i>Optional</i> data type
+     */
+    Optional<R> toOptional();
 }

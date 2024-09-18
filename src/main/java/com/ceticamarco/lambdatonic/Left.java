@@ -1,5 +1,6 @@
 package com.ceticamarco.lambdatonic;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 /**
@@ -45,5 +46,10 @@ public record Left<L, R>(L value) implements Either<L, R> {
     @Override
     public L fromLeft(L defaultValue) {
         return this.value;
+    }
+
+    @Override
+    public Optional<R> toOptional() {
+        return Optional.empty();
     }
 }

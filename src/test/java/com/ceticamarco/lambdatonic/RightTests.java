@@ -3,6 +3,7 @@ package com.ceticamarco.lambdatonic;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.util.Optional;
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -93,5 +94,13 @@ public class RightTests {
     @Test
     public void testFromLeftOnRight() {
         assertEquals(this.resEither.fromLeft(-1), -1);
+    }
+
+    @Test
+    public void testToOptionalFromRight() {
+        assertEquals(
+            this.numEither.toOptional(),
+            Optional.of(4)
+        );
     }
 }
