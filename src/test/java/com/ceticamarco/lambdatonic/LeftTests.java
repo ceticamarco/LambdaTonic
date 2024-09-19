@@ -22,10 +22,10 @@ public class LeftTests {
 
     @Test
     public void testMatchLeft() {
-        var actual = this.resEither.match(
-            errorCode  -> "Error code: " + errorCode.toString(),
-            successMsg -> successMsg
-        );
+        var actual = switch (this.resEither) {
+            case Left<Integer, String> left -> "Error code: " + left.value();
+            case Right<Integer, String> right -> right;
+        };
 
         var expected = "Error code: 19";
 
@@ -46,10 +46,10 @@ public class LeftTests {
     public void testFunctorMapLeft() {
         Either<Error, Integer> res = this.numEither.map(x -> x * x);
 
-        assertEquals(res.match(
-            Throwable::getMessage,
-            _ -> "Undefined variable"
-        ), "Undefined variable");
+        switch (res) {
+            case Left<Error, Integer> left -> assertEquals(left.value().getMessage(), "Undefined variable");
+            case Right<Error, Integer> _ -> { }
+        }
     }
 
     @Test

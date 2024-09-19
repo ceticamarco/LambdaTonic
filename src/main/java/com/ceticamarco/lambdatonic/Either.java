@@ -16,19 +16,6 @@ import java.util.function.Function;
 public sealed interface Either<L, R> permits Left, Right {
     /**
      * <p>
-     *      Executing an anonymous function by discriminating against
-     *      the <i>Either</i> data type value
-     * </p>
-     *
-     * @param onLeft The function to execute on the Left case
-     * @param onRight The function to execute on the Right case
-     * @return The return value of the onLeft/onRight methods
-     * @param <T> The type of the return value of the onLeft/onRight methods
-     */
-    <T> T match(Function<L, T> onLeft, Function<R, T> onRight);
-
-    /**
-     * <p>
      *     Returns true if the <i>Either</i> type is instantiated with the Left subtype,
      *     false otherwise
      * </p>

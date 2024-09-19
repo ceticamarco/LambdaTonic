@@ -22,10 +22,10 @@ public class RightTests {
 
     @Test
     public void testMatchRight() {
-        var actual = this.resEither.match(
-            errorCode  -> "Error code: " + errorCode.toString(),
-            successMsg -> successMsg
-        );
+        var actual = switch (this.resEither) {
+            case Left<Integer, String> left -> "Error code: " + left;
+            case Right<Integer, String> right -> right.value();
+        };
 
         var expected = "Query executed successfully";
 
@@ -46,10 +46,10 @@ public class RightTests {
     public void testFunctorMapRight() {
         Either<Error, Integer> res = this.numEither.map(x -> x * x);
 
-        assertEquals((int)res.match(
-            _ -> 0,
-            x -> x
-        ), 16);
+        switch (res) {
+            case Left<Error, Integer> _ -> { }
+            case Right<Error, Integer> right -> assertEquals(right.value(), 16);
+        }
     }
 
     @Test
