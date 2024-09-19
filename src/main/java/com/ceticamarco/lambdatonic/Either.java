@@ -39,8 +39,8 @@ public sealed interface Either<L, R> permits Left, Right {
      *     <br /><br />
      *     This method
      *     applies a function(<i>fn</i>) to the values inside the data type,
-     *     returning a new data type(i.e., a new functor) if and only if the the Either
-     *     type is instantiated with the <i>Right</i> subtype. Otherwise it leaves the functor
+     *     returning a new data type(i.e., a new functor) if and only if the Either
+     *     type is instantiated to the <i>Right</i> subtype. Otherwise it leaves the functor
      *     unchanged.
      *     <br /><br />
      *     The type of the resulting functor is the return type specified on the <i>fn</i>
