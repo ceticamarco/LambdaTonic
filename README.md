@@ -49,6 +49,23 @@ instance of the `Either<L, R>` type, while in any other case, we return a new `R
 `Either<L, R>` type. In the caller method(i.e., the `main`) we can then execute a custom statement using 
 Java's builtin pattern matching.
 
+
+## Installation
+**λTonic** is available on [Maven Central](https://central.sonatype.com/artifact/io.github.ceticamarco/LambdaTonic),
+you can install it either by using Maven:
+```xml
+<dependency>
+    <groupId>io.github.ceticamarco</groupId>
+    <artifactId>LambdaTonic</artifactId>
+    <version>0.0.1</version>
+</dependency>
+```
+
+or by using Gradle:
+```kotlin
+implementation 'io.github.ceticamarco:LambdaTonic:0.0.1'
+```
+
 ## API Usage
 The `Either<L, R>` data type supports a broad spectrum of features, below there is a list of all supported
 functionalities.
