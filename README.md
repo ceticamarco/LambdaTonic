@@ -57,7 +57,7 @@ you can install it either by using Maven:
 <dependency>
     <groupId>io.github.ceticamarco</groupId>
     <artifactId>LambdaTonic</artifactId>
-    <version>0.0.1</version>
+    <version>0.0.3</version>
 </dependency>
 ```
 
